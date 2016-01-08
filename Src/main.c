@@ -83,8 +83,26 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-  /* USER CODE END WHILE */
 
+//	  uint32_t ticksPassed = 0;
+//	  if (GPIOA->IDR & 0x01) {
+//		  uint32_t ticksPassed = 0;
+//		  while (GPIOA->IDR & 0x01) {
+//			  ticksPassed++;
+//		  }
+//		  SysTick_Config(ticksPassed);
+//	  }
+
+
+  /* USER CODE END WHILE */
+	  GPIOE->ODR ^= 0x0000FF00;
+	  int i = 0;
+	  while (i < 1000000) {
+		  i++;
+	  }
+
+//	  HAL_GPIO_TogglePin(GPIOE, 0xFF00);
+//	  HAL_Delay(1000);
   /* USER CODE BEGIN 3 */
 
   }
@@ -161,8 +179,8 @@ void MX_GPIO_Init(void)
                           |LD7_Pin|LD9_Pin|LD10_Pin|LD8_Pin 
                           |LD6_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
   /*Configure GPIO pin : B1_Pin */
